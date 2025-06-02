@@ -1,7 +1,7 @@
 // src/pages/Login.js
 import React, { useState } from 'react';
 import './Login.css';
-import config from '../config';
+import { API_CONFIG } from '../config';
 
 const Login = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ const Login = ({ onLoginSuccess }) => {
 
     try {
       // Anropa vårt backend API (använd HTTP port 5271)
-      const response = await fetch(`${config.USER_API_URL}/api/auth/login`, {
+      const response = await fetch(`${API_CONFIG.USER_API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

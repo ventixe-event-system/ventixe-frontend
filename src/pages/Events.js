@@ -1,7 +1,7 @@
 // src/pages/Events.js
 import React, { useState, useEffect } from 'react';
 import './Events.css';
-import config from '../config';
+import { API_CONFIG } from '../config';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -42,7 +42,7 @@ const Events = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${config.EVENT_API_URL}/api/events`);
+      const response = await fetch(`${API_CONFIG.EVENT_API_URL}/api/events`);
       
       if (!response.ok) {
         throw new Error('Kunde inte hämta events');
@@ -63,7 +63,7 @@ const Events = () => {
     try {
       const user = JSON.parse(localStorage.getItem('ventixe_user') || '{}');
       
-      const response = await fetch(`${config.EVENT_API_URL}/api/events/${eventId}/book`, {
+      const response = await fetch(`${API_CONFIG.EVENT_API_URL}/api/events/${event.id}/book`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
