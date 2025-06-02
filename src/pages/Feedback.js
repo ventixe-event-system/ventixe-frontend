@@ -1,6 +1,7 @@
 // src/pages/Feedback.js
 import React, { useState, useEffect } from 'react';
 import './Feedback.css';
+import config from '../config';
 
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -21,7 +22,7 @@ const Feedback = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('http://localhost:5272/api/Events');
+      const response = await fetch(`${config.EVENT_API_URL}/api/events/1/feedback`, {
       if (response.ok) {
         const data = await response.json();
         setEvents(data);
